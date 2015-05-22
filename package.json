@@ -1,0 +1,33 @@
+{
+  "name": "odin-phys2d-rigidbody",
+  "version": "0.0.1",
+  "description": "rigidbody component for the browser and node.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nathanfaucett/odin-phys2d-rigidbody.git"
+  },
+  "main": "src/index.js",
+  "keywords": [
+    "odin-phys2d-rigidbody",
+    "odin-phys2d-rigidbody.js"
+  ],
+  "scripts": {
+    "test": "comn -f examples/test/src/index.js -o examples/test/index.js"
+  },
+  "author": "Nathan Faucett",
+  "license": "BSD-2-Clause",
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "comn": "git://github.com/nathanfaucett/comn",
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-jsbeautifier": "^0.2.7",
+    "mocha": "^2.1.0"
+  },
+  "dependencies": {
+    "quat": "git://github.com/nathanfaucett/quat",
+    "vec2": "git://github.com/nathanfaucett/vec2",
+    "vec3": "git://github.com/nathanfaucett/vec3",
+    "odin": "git://github.com/nathanfaucett/odin"
+  }
+}
