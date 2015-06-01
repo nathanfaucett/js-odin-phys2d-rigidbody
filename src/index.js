@@ -2,23 +2,23 @@ var odin = require("odin"),
     vec2 = require("vec2"),
     vec3 = require("vec3"),
     quat = require("quat"),
-    phys2d = require("../../../src");
+    phys2d = require("phys2d");
 
 
 var Component = odin.Component,
     ComponentPrototype = Component.prototype,
-    RigidBodyPrototype;
+    Phys2DRigidBodyPrototype;
 
 
-module.exports = RigidBody;
+module.exports = Phys2DRigidBody;
 
 
-function RigidBody() {
+function Phys2DRigidBody() {
     var _this = this;
 
     Component.call(this);
 
-    this.body = new phys2d.Rigidbody();
+    this.body = new phys2d.RigidBody();
 
     this.__onCollide = function(body, si, sj) {
         return onCollide(_this, body, si, sj);
@@ -27,14 +27,14 @@ function RigidBody() {
         return onColliding(_this, body, si, sj);
     };
 }
-Component.extend(RigidBody, "RigidBody");
-RigidBodyPrototype = RigidBody.prototype;
+Component.extend(Phys2DRigidBody, "Phys2DRigidBody");
+Phys2DRigidBodyPrototype = Phys2DRigidBody.prototype;
 
-RigidBodyPrototype.awake = function() {
+Phys2DRigidBodyPrototype.awake = function() {
     var body = this.body,
-        gameObject = this.gameObject,
-        transform = gameObject.transform,
-        transform2d = gameObject.transform2d;
+        components = this.entity.components,
+        transform = components.Transform,
+        transform2d = components.Transform2D;
 
     ComponentPrototype.awake.call(this);
 
@@ -53,7 +53,7 @@ RigidBodyPrototype.awake = function() {
 };
 
 var update_zaxis = vec3.create(0.0, 0.0, 1.0);
-RigidBodyPrototype.update = function() {
+Phys2DRigidBodyPrototype.update = function() {
     var body = this.body,
         components = this.entity.components,
         transform = components.Transform,
